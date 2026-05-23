@@ -301,5 +301,5 @@ For support and queries:
 - Issues: GitHub Issues
 
 ---
-
+https://legallawagent.onrender.com/ URL for the app
 **Built with ❤️ for the Legal Tech Community**
