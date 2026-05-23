@@ -24,6 +24,9 @@ const userRoutes = require('./routes/user.routes');
 const app = express();
 let server;
 
+// Trust proxy (required for Render, Railway, and other reverse-proxy hosts)
+app.set('trust proxy', 1);
+
 // Security middleware
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" },
