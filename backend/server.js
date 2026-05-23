@@ -95,11 +95,14 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Health check endpoint
 app.get('/health', (req, res) => {
+  const mongoose = require('mongoose');
   res.status(200).json({
     status: 'success',
     message: 'AI Legal Intelligence System is running',
     timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV
+    environment: process.env.NODE_ENV,
+    database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+    mongoUriSet: !!process.env.MONGODB_URI
   });
 });
 
