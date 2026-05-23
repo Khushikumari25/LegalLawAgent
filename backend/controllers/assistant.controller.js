@@ -1,5 +1,6 @@
 const ApiResponse = require('../utils/response');
 const logger = require('../utils/logger');
+const geminiService = require('../services/gemini.service');
 const crewAIService = require('../services/crewai.service');
 const aiFallback = require('../services/ai-fallback.service');
 const retrievalService = require('../services/retrieval.service');
@@ -31,13 +32,25 @@ exports.chat = async (req, res, next) => {
     }
 
     if (!response) {
-      try {
-        response = await crewAIService.chatWithAssistant(trimmedMessage, context || {});
-        responseType = 'crewai';
-      } catch (aiError) {
-        logger.warn(`CrewAI unavailable: ${aiError.message}`);
-        response = generateFallback(trimmedMessage, language);
-        responseType = 'fallback';
+      // Try Gemini first, then CrewAI, then fallback
+      if (geminiService.isAvailable()) {
+        try {
+          response = await geminiService.chatWithAssistant(trimmedMessage, context || {});
+          responseType = 'gemini';
+        } catch (geminiError) {
+          logger.warn(`Gemini unavailable: ${geminiError.message}`);
+        }
+      }
+      
+      if (!response) {
+        try {
+          response = await crewAIService.chatWithAssistant(trimmedMessage, context || {});
+          responseType = 'crewai';
+        } catch (aiError) {
+          logger.warn(`CrewAI unavailable: ${aiError.message}`);
+          response = generateFallback(trimmedMessage, language);
+          responseType = 'fallback';
+        }
       }
     }
 
