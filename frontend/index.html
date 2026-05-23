@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>न्यायASTRA AI - Enterprise Legal Intelligence Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>tailwind.config={theme:{extend:{colors:{brand:{50:'#faf7f2',100:'#f5efe6',200:'#ecdcca',300:'#e0c49e',400:'#d4af37',500:'#c99846',600:'#8b5a2b',700:'#5c3a1e',800:'#3b2416',900:'#2a1a0f',950:'#1a0f08'},cream:'#faf7f2',ivory:'#f5f1e8',gold:'#c99846'},fontFamily:{serif:['Playfair Display','serif'],sans:['Inter','sans-serif']}}}}</script>
+    <style>.section-page{display:none}.section-page.active{display:block}</style>
+</head>
+<body class="bg-cream font-sans text-gray-800">
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md border-b border-brand-200/40">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <img src="assets/logo.png" alt="न्यायASTRA" class="w-8 h-8 object-contain">
+            <span class="font-serif text-xl font-bold"><span class="text-brand-500">न्याय</span><span class="text-brand-800">ASTRA</span></span>
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="#features" class="text-sm font-medium text-brand-700 hover:text-brand-900 transition" id="navFeatures">Features</a>
+            <a href="#how-it-works" class="text-sm font-medium text-brand-700 hover:text-brand-900 transition" id="navHow">How It Works</a>
+            <a href="#agents" class="text-sm font-medium text-brand-700 hover:text-brand-900 transition" id="navAgents">AI Agents</a>
+            <a href="pages/login.html" class="text-sm font-medium text-brand-700 hover:text-brand-900 transition" id="navLogin">Sign In</a>
+            <a href="pages/signup.html" class="px-5 py-2.5 bg-brand-700 text-white text-sm font-semibold rounded-lg hover:bg-brand-800 transition shadow-sm" id="navCTA">Get Started</a>
+            <button onclick="document.getElementById('homeLangDrop').classList.toggle('hidden')" class="px-2 py-1 bg-brand-700 text-white text-[10px] font-bold rounded hover:bg-brand-800 transition" id="homeLangBtn">EN</button>
+            <div id="homeLangDrop" class="hidden absolute right-6 top-14 w-28 bg-white border border-brand-200 rounded-lg shadow-lg py-1 z-50">
+                <button onclick="setHomeLang('en')" class="w-full text-left px-3 py-2 text-xs text-brand-700 hover:bg-brand-50">English</button>
+                <button onclick="setHomeLang('hi')" class="w-full text-left px-3 py-2 text-xs text-brand-700 hover:bg-brand-50">हिंदी</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-50 via-cream to-brand-100/50"></div>
+    <div class="absolute top-0 right-0 w-1/2 h-full opacity-20" style="background:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80') center/cover no-repeat"></div>
+    <div class="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-100 border border-brand-200 rounded-full mb-6">
+                <span class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>
+                <span class="text-xs font-semibold text-brand-700 uppercase tracking-wider">AI-Powered Legal Intelligence</span>
+            </div>
+            <h1 class="font-serif text-5xl lg:text-6xl font-bold text-brand-900 leading-tight mb-6">
+                <span class="text-brand-500">न्याय</span>ASTRA —<br>AI-Powered Legal<br><em class="text-brand-500">Intelligence</em>
+            </h1>
+            <p class="text-lg text-brand-700/80 leading-relaxed mb-8 max-w-lg">
+                Enterprise-grade IPC to BNS transition analysis, petition eligibility evaluation, and judicial intelligence powered by multi-agent AI. For the People.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="pages/signup.html" class="px-7 py-3.5 bg-brand-700 text-white font-semibold rounded-lg hover:bg-brand-800 transition shadow-lg shadow-brand-700/20">
+                    Start Free Trial
+                </a>
+                <a href="pages/login.html" class="px-7 py-3.5 bg-white text-brand-700 font-semibold rounded-lg border border-brand-200 hover:border-brand-400 transition">
+                    Sign In
+                </a>
+            </div>
+            <div class="flex items-center gap-8 mt-10 pt-8 border-t border-brand-200/60">
+                <div><p class="text-2xl font-bold text-brand-800">10K+</p><p class="text-xs text-brand-600">Cases Analyzed</p></div>
+                <div><p class="text-2xl font-bold text-brand-800">95%</p><p class="text-xs text-brand-600">Accuracy Rate</p></div>
+                <div><p class="text-2xl font-bold text-brand-800">500+</p><p class="text-xs text-brand-600">IPC-BNS Maps</p></div>
+            </div>
+        </div>
+        <div class="hidden lg:block">
+            <div class="relative">
+                <div class="w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-brand-900/20 border border-brand-200">
+                    <img src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=600&q=80" alt="Lady Justice" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-xl border border-brand-100">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-brand-100 rounded-lg flex items-center justify-center"><i data-lucide="shield-check" class="w-5 h-5 text-brand-600"></i></div>
+                        <div><p class="text-sm font-semibold text-brand-800">AI Confidence</p><p class="text-xs text-brand-500">95.2% accuracy</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Features Section -->
+<section id="features" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider mb-3">Our Capabilities</p>
+            <h2 class="font-serif text-4xl font-bold text-brand-900">Legal Intelligence Features</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a href="pages/dashboard.html" class="group p-6 bg-cream border border-brand-100 rounded-xl hover:border-brand-300 hover:shadow-lg hover:shadow-brand-100 transition-all">
+                <div class="w-11 h-11 bg-brand-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-200 transition"><i data-lucide="upload-cloud" class="w-5 h-5 text-brand-600"></i></div>
+                <h3 class="text-base font-semibold text-brand-800 mb-2">Upload Case</h3>
+                <p class="text-sm text-brand-600/70 leading-relaxed">Upload FIR, charge sheets, and legal documents for AI-powered analysis.</p>
+            </a>
+            <a href="pages/dashboard.html" class="group p-6 bg-cream border border-brand-100 rounded-xl hover:border-brand-300 hover:shadow-lg hover:shadow-brand-100 transition-all">
+                <div class="w-11 h-11 bg-brand-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-200 transition"><i data-lucide="bot" class="w-5 h-5 text-brand-600"></i></div>
+                <h3 class="text-base font-semibold text-brand-800 mb-2">AI Assistant</h3>
+                <p class="text-sm text-brand-600/70 leading-relaxed">24/7 AI legal assistant for queries, research, and case guidance.</p>
+            </a>
+            <a href="pages/dashboard.html" class="group p-6 bg-cream border border-brand-100 rounded-xl hover:border-brand-300 hover:shadow-lg hover:shadow-brand-100 transition-all">
+                <div class="w-11 h-11 bg-brand-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-200 transition"><i data-lucide="arrow-left-right" class="w-5 h-5 text-brand-600"></i></div>
+                <h3 class="text-base font-semibold text-brand-800 mb-2">IPC to BNS Mapping</h3>
+                <p class="text-sm text-brand-600/70 leading-relaxed">Automated transition analysis from Indian Penal Code to Bharatiya Nyaya Sanhita.</p>
+            </a>
+            <a href="pages/dashboard.html" class="group p-6 bg-cream border border-brand-100 rounded-xl hover:border-brand-300 hover:shadow-lg hover:shadow-brand-100 transition-all">
+                <div class="w-11 h-11 bg-brand-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-200 transition"><i data-lucide="briefcase" class="w-5 h-5 text-brand-600"></i></div>
+                <h3 class="text-base font-semibold text-brand-800 mb-2">My Cases</h3>
+                <p class="text-sm text-brand-600/70 leading-relaxed">Manage all uploaded cases with AI analysis, risk scores, and insights.</p>
+            </a>
+            <a href="pages/dashboard.html" class="group p-6 bg-cream border border-brand-100 rounded-xl hover:border-brand-300 hover:shadow-lg hover:shadow-brand-100 transition-all">
+                <div class="w-11 h-11 bg-brand-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-200 transition"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-600"></i></div>
+                <h3 class="text-base font-semibold text-brand-800 mb-2">Petition Eligibility</h3>
+                <p class="text-sm text-brand-600/70 leading-relaxed">AI-driven eligibility scoring and recommendation engine for petitions.</p>
+            </a>
+            <a href="pages/dashboard.html" class="group p-6 bg-cream border border-brand-100 rounded-xl hover:border-brand-300 hover:shadow-lg hover:shadow-brand-100 transition-all">
+                <div class="w-11 h-11 bg-brand-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-200 transition"><i data-lucide="file-bar-chart" class="w-5 h-5 text-brand-600"></i></div>
+                <h3 class="text-base font-semibold text-brand-800 mb-2">Reports</h3>
+                <p class="text-sm text-brand-600/70 leading-relaxed">Generate comprehensive legal reports with AI insights and recommendations.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section id="how-it-works" class="py-24 bg-brand-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider mb-3">Process</p>
+            <h2 class="font-serif text-4xl font-bold text-brand-900">How It Works</h2>
+        </div>
+        <div class="grid md:grid-cols-4 gap-8">
+            <div class="text-center"><div class="w-14 h-14 bg-brand-200 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-700 font-bold text-lg">1</div><h4 class="font-semibold text-brand-800 mb-2">Upload Documents</h4><p class="text-sm text-brand-600/70">Upload FIR, judgments, or case files in PDF format</p></div>
+            <div class="text-center"><div class="w-14 h-14 bg-brand-200 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-700 font-bold text-lg">2</div><h4 class="font-semibold text-brand-800 mb-2">AI Analysis</h4><p class="text-sm text-brand-600/70">Multi-agent AI system analyzes and extracts key information</p></div>
+            <div class="text-center"><div class="w-14 h-14 bg-brand-200 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-700 font-bold text-lg">3</div><h4 class="font-semibold text-brand-800 mb-2">IPC-BNS Mapping</h4><p class="text-sm text-brand-600/70">Automatic mapping of IPC sections to BNS equivalents</p></div>
+            <div class="text-center"><div class="w-14 h-14 bg-brand-200 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-700 font-bold text-lg">4</div><h4 class="font-semibold text-brand-800 mb-2">Insights & Reports</h4><p class="text-sm text-brand-600/70">View comprehensive insights and generate detailed reports</p></div>
+        </div>
+    </div>
+</section>
+<!-- Multi-Agent Section -->
+<section id="agents" class="py-24 bg-brand-800">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <p class="text-sm font-semibold text-brand-300 uppercase tracking-wider mb-3">Architecture</p>
+            <h2 class="font-serif text-4xl font-bold text-white">Multi-Agent AI System</h2>
+            <p class="text-brand-300 mt-3 max-w-xl mx-auto">Powered by CrewAI orchestration with specialized legal intelligence agents</p>
+        </div>
+        <div class="grid md:grid-cols-5 gap-4">
+            <a href="pages/dashboard.html" class="p-5 bg-brand-700/50 border border-brand-600/30 rounded-xl text-center hover:bg-brand-700 hover:border-brand-500/50 transition group">
+                <div class="w-10 h-10 bg-brand-600/30 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-brand-500/30 transition"><i data-lucide="folder-search" class="w-5 h-5 text-brand-200"></i></div>
+                <h4 class="text-sm font-semibold text-white mb-1">Classification</h4><p class="text-xs text-brand-300">Categorizes cases</p>
+            </a>
+            <a href="pages/dashboard.html" class="p-5 bg-brand-700/50 border border-brand-600/30 rounded-xl text-center hover:bg-brand-700 hover:border-brand-500/50 transition group">
+                <div class="w-10 h-10 bg-brand-600/30 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-brand-500/30 transition"><i data-lucide="arrow-left-right" class="w-5 h-5 text-brand-200"></i></div>
+                <h4 class="text-sm font-semibold text-white mb-1">IPC vs BNS</h4><p class="text-xs text-brand-300">Maps sections</p>
+            </a>
+            <a href="pages/dashboard.html" class="p-5 bg-brand-700/50 border border-brand-600/30 rounded-xl text-center hover:bg-brand-700 hover:border-brand-500/50 transition group">
+                <div class="w-10 h-10 bg-brand-600/30 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-brand-500/30 transition"><i data-lucide="clipboard-check" class="w-5 h-5 text-brand-200"></i></div>
+                <h4 class="text-sm font-semibold text-white mb-1">Eligibility</h4><p class="text-xs text-brand-300">Evaluates petitions</p>
+            </a>
+            <a href="pages/dashboard.html" class="p-5 bg-brand-700/50 border border-brand-600/30 rounded-xl text-center hover:bg-brand-700 hover:border-brand-500/50 transition group">
+                <div class="w-10 h-10 bg-brand-600/30 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-brand-500/30 transition"><i data-lucide="lightbulb" class="w-5 h-5 text-brand-200"></i></div>
+                <h4 class="text-sm font-semibold text-white mb-1">Suggestions</h4><p class="text-xs text-brand-300">Legal insights</p>
+            </a>
+            <a href="pages/dashboard.html" class="p-5 bg-brand-700/50 border border-brand-600/30 rounded-xl text-center hover:bg-brand-700 hover:border-brand-500/50 transition group">
+                <div class="w-10 h-10 bg-brand-600/30 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-brand-500/30 transition"><i data-lucide="bar-chart-3" class="w-5 h-5 text-brand-200"></i></div>
+                <h4 class="text-sm font-semibold text-white mb-1">Analytics</h4><p class="text-xs text-brand-300">Generates trends</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 bg-cream">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+        <h2 class="font-serif text-3xl font-bold text-brand-900 mb-4">Ready to Transform Your Legal Practice?</h2>
+        <p class="text-brand-600/70 mb-8">Join legal professionals using AI-powered intelligence for better case analysis and outcomes.</p>
+        <a href="pages/signup.html" class="inline-block px-8 py-4 bg-brand-700 text-white font-semibold rounded-lg hover:bg-brand-800 transition shadow-lg shadow-brand-700/20">Start Your Free Trial</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-10 bg-brand-900 border-t border-brand-800">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2"><i data-lucide="scale" class="w-5 h-5 text-brand-400"></i><span class="font-serif text-sm font-bold text-brand-200"><span class="text-brand-400">न्याय</span>ASTRA</span></div>
+        <p class="text-xs text-brand-400">&copy; 2026 न्यायASTRA AI — Enterprise Legal Intelligence. For the People.</p>
+    </div>
+</footer>
+
+<script>
+lucide.createIcons();
+const hiTexts = {
+  navFeatures: 'विशेषताएं', navHow: 'कैसे काम करता है', navAgents: 'AI एजेंट', navLogin: 'लॉग इन', navCTA: 'शुरू करें',
+  heroTag: 'AI-संचालित कानूनी बुद्धिमत्ता',
+  heroTitle: 'न्यायASTRA —\nAI-संचालित कानूनी\nबुद्धिमत्ता',
+  heroDesc: 'एंटरप्राइज़-ग्रेड IPC से BNS संक्रमण विश्लेषण, याचिका पात्रता मूल्यांकन, और न्यायिक बुद्धिमत्ता — मल्टी-एजेंट AI द्वारा संचालित। जनता के लिए।',
+  heroCTA1: 'निःशुल्क शुरू करें', heroCTA2: 'लॉग इन',
+  stat1: 'केस विश्लेषित', stat2: 'सटीकता दर', stat3: 'IPC-BNS मैप',
+  confLabel: 'AI विश्वास स्कोर', confVal: '95.2% सटीकता',
+  featTitle: 'कानूनी बुद्धिमत्ता विशेषताएं', featSub: 'हमारी क्षमताएं',
+  f1t: 'केस अपलोड', f1d: 'FIR, चार्जशीट और कानूनी दस्तावेज़ AI-संचालित विश्लेषण के लिए अपलोड करें।',
+  f2t: 'AI सहायक', f2d: '24/7 AI कानूनी सहायक — प्रश्न, शोध और केस मार्गदर्शन के लिए।',
+  f3t: 'IPC से BNS मैपिंग', f3d: 'भारतीय दंड संहिता से भारतीय न्याय संहिता में स्वचालित संक्रमण विश्लेषण।',
+  f4t: 'मेरे केस', f4d: 'AI विश्लेषण, जोखिम स्कोर और अंतर्दृष्टि के साथ सभी अपलोड किए गए केस प्रबंधित करें।',
+  f5t: 'याचिका पात्रता', f5d: 'AI-संचालित पात्रता स्कोरिंग और याचिकाओं के लिए सिफारिश इंजन।',
+  f6t: 'रिपोर्ट्स', f6d: 'AI अंतर्दृष्टि और सिफारिशों के साथ व्यापक कानूनी रिपोर्ट तैयार करें।',
+  howTitle: 'कैसे काम करता है', howSub: 'प्रक्रिया',
+  h1t: 'दस्तावेज़ अपलोड', h1d: 'FIR, निर्णय या केस फाइलें PDF में अपलोड करें',
+  h2t: 'AI विश्लेषण', h2d: 'मल्टी-एजेंट AI प्रणाली विश्लेषण करती है और मुख्य जानकारी निकालती है',
+  h3t: 'IPC-BNS मैपिंग', h3d: 'IPC धाराओं का BNS समकक्षों में स्वचालित मैपिंग',
+  h4t: 'अंतर्दृष्टि और रिपोर्ट', h4d: 'व्यापक अंतर्दृष्टि देखें और विस्तृत रिपोर्ट तैयार करें',
+  agentTitle: 'मल्टी-एजेंट AI प्रणाली', agentSub: 'वास्तुकला', agentDesc: 'CrewAI ऑर्केस्ट्रेशन द्वारा संचालित विशेष कानूनी बुद्धिमत्ता एजेंट',
+  a1: 'वर्गीकरण', a1d: 'केस वर्गीकृत करता है', a2: 'IPC बनाम BNS', a2d: 'धाराएं मैप करता है', a3: 'पात्रता', a3d: 'याचिकाओं का मूल्यांकन', a4: 'सुझाव', a4d: 'कानूनी अंतर्दृष्टि', a5: 'विश्लेषिकी', a5d: 'रुझान तैयार करता है',
+  ctaTitle: 'अपनी कानूनी प्रैक्टिस बदलने के लिए तैयार हैं?', ctaDesc: 'बेहतर केस विश्लेषण के लिए AI-संचालित बुद्धिमत्ता का उपयोग करने वाले कानूनी पेशेवरों से जुड़ें।', ctaBtn: 'निःशुल्क शुरू करें',
+  footer: '© 2026 न्यायASTRA AI — एंटरप्राइज़ कानूनी बुद्धिमत्ता। जनता के लिए।'
+};
+function setHomeLang(lang){
+  localStorage.setItem('appLanguage',lang);
+  document.getElementById('homeLangDrop').classList.add('hidden');
+  document.getElementById('homeLangBtn').textContent=lang==='hi'?'हि':'EN';
+  if(lang==='hi'){
+    // Nav
+    document.getElementById('navFeatures').textContent=hiTexts.navFeatures;
+    document.getElementById('navHow').textContent=hiTexts.navHow;
+    document.getElementById('navAgents').textContent=hiTexts.navAgents;
+    document.getElementById('navLogin').textContent=hiTexts.navLogin;
+    document.getElementById('navCTA').textContent=hiTexts.navCTA;
+    // Hero
+    const heroTag=document.querySelector('.text-blue-400,.text-brand-400,[class*="tracking-wider"]');
+    if(heroTag)heroTag.textContent=hiTexts.heroTag;
+    const h1=document.querySelector('h1');if(h1)h1.innerHTML='<span class="text-brand-500">न्याय</span>ASTRA —<br>AI-संचालित कानूनी<br><em class="text-brand-500">बुद्धिमत्ता</em>';
+    const heroP=document.querySelector('h1+p,.text-lg.text-brand-700\\/80');if(heroP)heroP.textContent=hiTexts.heroDesc;
+    // CTAs
+    const ctas=document.querySelectorAll('a[href="pages/signup.html"]');ctas.forEach(a=>{if(a.classList.contains('shadow-lg'))a.textContent=hiTexts.heroCTA1;});
+    const loginBtns=document.querySelectorAll('a[href="pages/login.html"]');loginBtns.forEach(a=>{if(!a.id)a.textContent=hiTexts.heroCTA2;});
+    // Stats
+    const statLabels=document.querySelectorAll('.text-xs.text-brand-600');
+    if(statLabels[0])statLabels[0].textContent=hiTexts.stat1;
+    if(statLabels[1])statLabels[1].textContent=hiTexts.stat2;
+    if(statLabels[2])statLabels[2].textContent=hiTexts.stat3;
+    // Features section
+    const featH2s=document.querySelectorAll('#features h2');if(featH2s[0])featH2s[0].textContent=hiTexts.featTitle;
+    const featPs=document.querySelectorAll('#features .uppercase');if(featPs[0])featPs[0].textContent=hiTexts.featSub;
+    const cards=document.querySelectorAll('#features .grid a');
+    const fData=[[hiTexts.f1t,hiTexts.f1d],[hiTexts.f2t,hiTexts.f2d],[hiTexts.f3t,hiTexts.f3d],[hiTexts.f4t,hiTexts.f4d],[hiTexts.f5t,hiTexts.f5d],[hiTexts.f6t,hiTexts.f6d]];
+    cards.forEach((c,i)=>{if(fData[i]){const h3=c.querySelector('h3');const p=c.querySelector('p');if(h3)h3.textContent=fData[i][0];if(p)p.textContent=fData[i][1];}});
+    // How it works
+    const howH2=document.querySelector('#how-it-works h2');if(howH2)howH2.textContent=hiTexts.howTitle;
+    const howP=document.querySelector('#how-it-works .uppercase');if(howP)howP.textContent=hiTexts.howSub;
+    const steps=document.querySelectorAll('#how-it-works .grid>div');
+    const hData=[[hiTexts.h1t,hiTexts.h1d],[hiTexts.h2t,hiTexts.h2d],[hiTexts.h3t,hiTexts.h3d],[hiTexts.h4t,hiTexts.h4d]];
+    steps.forEach((s,i)=>{if(hData[i]){const h4=s.querySelector('h4');const p=s.querySelector('p');if(h4)h4.textContent=hData[i][0];if(p)p.textContent=hData[i][1];}});
+    // Agents
+    const agH2=document.querySelector('#agents h2');if(agH2)agH2.textContent=hiTexts.agentTitle;
+    const agPs=document.querySelectorAll('#agents .uppercase');if(agPs[0])agPs[0].textContent=hiTexts.agentSub;
+    const agDesc=document.querySelector('#agents p.text-brand-300');if(agDesc)agDesc.textContent=hiTexts.agentDesc;
+    const agCards=document.querySelectorAll('#agents .grid a');
+    const aData=[[hiTexts.a1,hiTexts.a1d],[hiTexts.a2,hiTexts.a2d],[hiTexts.a3,hiTexts.a3d],[hiTexts.a4,hiTexts.a4d],[hiTexts.a5,hiTexts.a5d]];
+    agCards.forEach((c,i)=>{if(aData[i]){const h4=c.querySelector('h4');const p=c.querySelector('p');if(h4)h4.textContent=aData[i][0];if(p)p.textContent=aData[i][1];}});
+    // CTA
+    const ctaH2=document.querySelector('section:not(#features):not(#how-it-works):not(#agents) h2.font-serif.text-3xl');if(ctaH2)ctaH2.textContent=hiTexts.ctaTitle;
+    // Footer
+    const footerP=document.querySelector('footer p');if(footerP)footerP.textContent=hiTexts.footer;
+  } else {
+    location.reload(); // Simplest way to restore English
+  }
+}
+(function(){const l=localStorage.getItem('appLanguage');if(l==='hi')setTimeout(()=>setHomeLang('hi'),100);})();
+</script>
+</body>
+</html>

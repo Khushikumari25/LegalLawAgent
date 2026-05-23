@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - न्यायASTRA AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>tailwind.config={theme:{extend:{colors:{brand:{50:'#faf7f2',100:'#f5efe6',200:'#ecdcca',300:'#e0c49e',400:'#d4af37',500:'#c99846',600:'#8b5a2b',700:'#5c3a1e',800:'#3b2416',900:'#2a1a0f'},cream:'#faf7f2',gold:'#c99846'},fontFamily:{serif:['Playfair Display','serif'],sans:['Inter','sans-serif']}}}}</script>
+</head>
+<body class="bg-cream font-sans min-h-screen flex">
+    <!-- Left Panel -->
+    <div class="hidden lg:flex lg:w-1/2 bg-brand-800 relative items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 opacity-30" style="background:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80') center/cover"></div>
+        <div class="relative z-10 px-12 text-center">
+            <div class="flex items-center justify-center gap-2 mb-8">
+                <img src="../assets/logo.png" alt="न्यायASTRA" class="w-12 h-12 object-contain">
+                <span class="font-serif text-2xl font-bold text-white"><span class="text-brand-300">न्याय</span>ASTRA</span>
+            </div>
+            <h2 class="font-serif text-3xl font-bold text-white mb-4">Start Your Journey<br>with न्यायASTRA AI</h2>
+            <p class="text-brand-200 text-sm leading-relaxed max-w-sm mx-auto">Upload cases, get AI-powered analysis, IPC-BNS mapping, petition eligibility scoring, and comprehensive legal reports. For the People.</p>
+        </div>
+    </div>
+    <!-- Right Panel -->
+    <div class="flex-1 flex items-center justify-center p-8">
+        <div class="w-full max-w-md">
+            <div class="lg:hidden flex items-center gap-2 mb-8">
+                <img src="../assets/logo.png" alt="न्यायASTRA" class="w-8 h-8 object-contain">
+                <span class="font-serif text-lg font-bold"><span class="text-brand-500">न्याय</span><span class="text-brand-800">ASTRA</span></span>
+            </div>
+            <h1 class="font-serif text-2xl font-bold text-brand-900 mb-1">Create Account</h1>
+            <p class="text-sm text-brand-500 mb-8">Get started with AI-powered legal intelligence</p>
+            <form id="signupForm" class="space-y-4">
+                <div>
+                    <label class="text-[11px] text-brand-600 font-medium mb-1.5 block">Full Name</label>
+                    <input type="text" id="name" required class="w-full px-4 py-3 bg-white border border-brand-200 rounded-lg text-sm text-brand-800 placeholder-brand-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100 transition" placeholder="John Doe">
+                </div>
+                <div>
+                    <label class="text-[11px] text-brand-600 font-medium mb-1.5 block">Email Address</label>
+                    <input type="email" id="email" required class="w-full px-4 py-3 bg-white border border-brand-200 rounded-lg text-sm text-brand-800 placeholder-brand-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100 transition" placeholder="you@example.com">
+                </div>
+                <div>
+                    <label class="text-[11px] text-brand-600 font-medium mb-1.5 block">Role</label>
+                    <select id="role" class="w-full px-4 py-3 bg-white border border-brand-200 rounded-lg text-sm text-brand-800 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100 transition">
+                        <option value="user">User</option>
+                        <option value="lawyer">Lawyer</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-[11px] text-brand-600 font-medium mb-1.5 block">Password</label>
+                    <input type="password" id="password" required minlength="6" class="w-full px-4 py-3 bg-white border border-brand-200 rounded-lg text-sm text-brand-800 placeholder-brand-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100 transition" placeholder="Min 6 characters">
+                </div>
+                <div id="errorMessage" class="hidden p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700"></div>
+                <div id="successMessage" class="hidden p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-700"></div>
+                <button type="submit" id="submitBtn" class="w-full py-3 bg-brand-700 text-white font-semibold rounded-lg hover:bg-brand-800 transition shadow-sm">
+                    <span id="buttonText">Create Account</span>
+                    <span id="buttonLoader" class="hidden">Creating...</span>
+                </button>
+            </form>
+            <p class="mt-6 text-center text-sm text-brand-500">
+                Already have an account? <a href="login.html" class="text-brand-700 font-semibold hover:text-brand-800 transition">Sign in</a>
+            </p>
+            <a href="../index.html" class="mt-4 block text-center text-xs text-brand-400 hover:text-brand-600 transition">Back to home</a>
+        </div>
+    </div>
+<script src="../js/validators.js"></script>
+<script>
+    lucide.createIcons();
+    (function(){if(localStorage.getItem('accessToken'))window.location.href='dashboard.html';})();
+    document.getElementById('signupForm').addEventListener('submit',async function(e){
+        e.preventDefault();const btn=document.getElementById('submitBtn'),err=document.getElementById('errorMessage'),suc=document.getElementById('successMessage');
+        btn.disabled=true;document.getElementById('buttonText').classList.add('hidden');document.getElementById('buttonLoader').classList.remove('hidden');err.classList.add('hidden');suc.classList.add('hidden');
+        try{
+            const r=await axios.post('http://localhost:5000/api/v1/auth/register',{name:document.getElementById('name').value,email:document.getElementById('email').value,password:document.getElementById('password').value,role:document.getElementById('role').value},{timeout:10000,headers:{'Content-Type':'application/json'}});
+            if(r.data.success||r.data.status==='success'){suc.classList.remove('hidden');suc.textContent='Account created! Redirecting...';const d=r.data.data;if(d){localStorage.setItem('accessToken',d.accessToken||d.token||'');localStorage.setItem('refreshToken',d.refreshToken||'');localStorage.setItem('user',JSON.stringify(d.user||{}));}setTimeout(()=>window.location.href='dashboard.html',1200);}
+        }catch(error){err.classList.remove('hidden');err.textContent=error.response?.data?.message||'Registration failed.';btn.disabled=false;document.getElementById('buttonText').classList.remove('hidden');document.getElementById('buttonLoader').classList.add('hidden');}
+    });
+</script>
+</body>
+</html>
