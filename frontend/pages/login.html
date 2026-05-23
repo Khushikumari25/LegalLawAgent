@@ -69,7 +69,7 @@
         const btn=document.querySelector('button[type=submit]'),err=document.getElementById('errorMessage');
         document.getElementById('buttonText').classList.add('hidden');document.getElementById('buttonLoader').classList.remove('hidden');err.classList.add('hidden');
         try{
-            const r=await axios.post('http://localhost:5000/api/v1/auth/login',{email:document.getElementById('email').value,password:document.getElementById('password').value});
+            const r=await axios.post(window.location.origin+'/api/v1/auth/login',{email:document.getElementById('email').value,password:document.getElementById('password').value});
             if(r.data.status==='success'){localStorage.setItem('accessToken',r.data.data.accessToken);localStorage.setItem('refreshToken',r.data.data.refreshToken);localStorage.setItem('user',JSON.stringify(r.data.data.user));window.location.href='dashboard.html';}
         }catch(error){err.classList.remove('hidden');err.textContent=error.response?.data?.message||'Login failed. Please try again.';document.getElementById('buttonText').classList.remove('hidden');document.getElementById('buttonLoader').classList.add('hidden');}
     });
