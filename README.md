@@ -113,9 +113,9 @@ REM Edit .env with your configuration
 **IMPORTANT - CrewAI Bearer Tokens**: 
 The `.env` file is already configured with your CrewAI Bearer Tokens:
 ```env
-CREWAI_API_URL=https://enterprise-ai-legal-intelligence-platform-c-32c1ec28.crewai.com
-CREWAI_BEARER_TOKEN=e7ff9dba24b1
-CREWAI_USER_BEARER_TOKEN=dee4248e1f8f
+CREWAI_API_URL=creq ai url
+CREWAI_BEARER_TOKEN=your token
+CREWAI_USER_BEARER_TOKEN=you token
 ```
 
 If you need to update tokens, get them from your CrewAI deployment dashboard.
