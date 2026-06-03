@@ -53,10 +53,18 @@ exports.createCase = async (req, res, next) => {
       const pdfFile = req.files.find(f => f.mimetype === 'application/pdf');
       if (pdfFile) {
         try {
-          const extracted = await extractTextFromPDF(pdfFile.path);
+          // Quick extraction for large PDFs (first 50 pages only for metadata)
+          const extracted = await extractTextFromPDF(pdfFile.path, { 
+            maxPages: 50, 
+            maxTextLength: 500000 
+          });
+          
           caseData.extractedText = extracted.text;
+          caseData.metadata = caseData.metadata || {};
+          caseData.metadata.totalPages = extracted.pages;
+          caseData.metadata.textTruncated = extracted.truncated;
 
-          // Extract IPC sections
+          // Extract IPC sections from available text
           const ipcSections = extractIPCSections(extracted.text);
           if (ipcSections.length > 0) {
             caseData.ipcSections = ipcSections.map(ipc => ({
@@ -65,7 +73,7 @@ exports.createCase = async (req, res, next) => {
             }));
           }
 
-          // Extract metadata
+          // Extract metadata from available text
           const metadata = extractCaseMetadata(extracted.text);
           
           // Only merge valid metadata fields (skip null/undefined values)
@@ -77,8 +85,11 @@ exports.createCase = async (req, res, next) => {
           if (metadata.victims && metadata.victims.length > 0) cleanMetadata.victims = metadata.victims;
           
           caseData.metadata = { ...caseData.metadata, ...cleanMetadata };
+          
+          logger.info(`Large PDF processed: ${extracted.pages} pages, truncated: ${extracted.truncated}`);
         } catch (extractError) {
           logger.warn(`PDF extraction failed: ${extractError.message}`);
+          // Continue without extraction - file is still saved
         }
       }
     }

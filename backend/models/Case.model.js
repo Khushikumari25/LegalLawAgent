@@ -114,7 +114,9 @@ const caseSchema = new mongoose.Schema({
     accused: [String],
     victims: [String],
     witnesses: [String],
-    evidenceCount: Number
+    evidenceCount: Number,
+    totalPages: Number,
+    textTruncated: Boolean
   },
   tags: [String],
   notes: String,

@@ -3,21 +3,41 @@ const fs = require('fs').promises;
 const logger = require('./logger');
 
 /**
- * Extract text from PDF file
+ * Extract text from PDF file with optimized memory handling for large files
  * @param {string} filePath - Path to PDF file
+ * @param {Object} options - Extraction options
  * @returns {Promise<Object>} Extracted text and metadata
  */
-async function extractTextFromPDF(filePath) {
+async function extractTextFromPDF(filePath, options = {}) {
   try {
     const dataBuffer = await fs.readFile(filePath);
-    const data = await pdf(dataBuffer);
+    
+    // For very large PDFs, extract only first N pages for metadata
+    const maxPagesForMetadata = options.maxPages || 50; // Only process first 50 pages for metadata extraction
+    
+    const pdfOptions = {
+      max: maxPagesForMetadata, // Limit pages processed for metadata
+      version: 'v2.0.550' // Use specific version for consistency
+    };
+    
+    const data = await pdf(dataBuffer, pdfOptions);
+    
+    // For large PDFs, only keep first 100KB of text to avoid memory issues
+    const maxTextLength = options.maxTextLength || 500000; // ~500KB of text (~100 pages avg)
+    const truncatedText = data.text.length > maxTextLength 
+      ? data.text.substring(0, maxTextLength) + '\n\n[... PDF truncated for processing. Full document stored.]'
+      : data.text;
+
+    logger.info(`PDF extracted: ${data.numpages} pages, ${data.text.length} chars, stored ${truncatedText.length} chars`);
 
     return {
-      text: data.text,
+      text: truncatedText,
+      fullTextLength: data.text.length,
       pages: data.numpages,
       info: data.info,
       metadata: data.metadata,
-      version: data.version
+      version: data.version,
+      truncated: data.text.length > maxTextLength
     };
   } catch (error) {
     logger.error(`PDF extraction error: ${error.message}`);

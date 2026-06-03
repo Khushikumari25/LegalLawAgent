@@ -183,7 +183,9 @@ class APIClient {
 
             const response = await axios.post(`${this.baseURL}${endpoint}`, formData, {
                 headers,
-                timeout: 120000 // 2 minutes timeout for large PDF uploads and extraction
+                timeout: 300000, // 5 minutes timeout for large PDF uploads (2000+ pages)
+                maxContentLength: 100 * 1024 * 1024, // 100MB max
+                maxBodyLength: 100 * 1024 * 1024 // 100MB max
             });
             return response.data;
         } catch (error) {
