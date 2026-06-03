@@ -67,7 +67,16 @@ exports.createCase = async (req, res, next) => {
 
           // Extract metadata
           const metadata = extractCaseMetadata(extracted.text);
-          caseData.metadata = { ...caseData.metadata, ...metadata };
+          
+          // Only merge valid metadata fields (skip null/undefined values)
+          const cleanMetadata = {};
+          if (metadata.firNumber) cleanMetadata.firNumber = metadata.firNumber;
+          if (metadata.policeStation) cleanMetadata.policeStation = metadata.policeStation;
+          if (metadata.dateOfIncident) cleanMetadata.dateOfIncident = metadata.dateOfIncident;
+          if (metadata.accused && metadata.accused.length > 0) cleanMetadata.accused = metadata.accused;
+          if (metadata.victims && metadata.victims.length > 0) cleanMetadata.victims = metadata.victims;
+          
+          caseData.metadata = { ...caseData.metadata, ...cleanMetadata };
         } catch (extractError) {
           logger.warn(`PDF extraction failed: ${extractError.message}`);
         }
