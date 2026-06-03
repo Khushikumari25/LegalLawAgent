@@ -88,8 +88,14 @@ class APIClient {
                     window.location.href = getLoginPath();
                 }
             }
-            throw new Error(error.response.data.message || 'API request failed');
+            // Extract error message from response
+            const errorMsg = error.response.data?.message || error.response.data?.error || error.response.statusText || 'API request failed';
+            throw new Error(errorMsg);
         } else if (error.request) {
+            // The request was made but no response was received
+            if (error.code === 'ECONNABORTED') {
+                throw new Error('Request timeout. The server is taking too long to respond.');
+            }
             throw new Error('No response from server. Please check your connection.');
         } else {
             throw new Error(error.message || 'An error occurred');
@@ -176,7 +182,8 @@ class APIClient {
             }
 
             const response = await axios.post(`${this.baseURL}${endpoint}`, formData, {
-                headers
+                headers,
+                timeout: 120000 // 2 minutes timeout for large PDF uploads and extraction
             });
             return response.data;
         } catch (error) {
